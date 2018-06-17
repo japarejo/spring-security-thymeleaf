@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+	<h2>Parlamentarios:</h2>
+	<div class="container">
+		<br />
+		<c:if test="${mensaje != null}">
+		<div class="alert alert-${tipomensaje}">
+			<c:out value="${mensaje}"></c:out>
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+		</div>
+		</c:if>
+	</div>
+	<a href="/parlamentarios/create"><span class="glyphicon glyphicon-plus sucess" aria-hidden="true"></span>Crear parlamentario</a>
+	<table class="table table-striped">
+		<tr>
+			<th>Nombre</th>
+			<th>Órganos</th>
+			
+			<th>Acciones</th>
+		</tr>		 
+			<tr  th:each="p: ${parlamentarios}">
+				<td><${p.nombre}</td>				
+				<td>Miembro de:
+					<ul>					
+						<li th:each="o: ${p.organos}">
+							${o.descripcion}
+						</li>
+					
+					</ul>
+				</td>
+				<td><a href="/parlamentarios/edit/${p.id}" ><span class="glyphicon glyphicon-pencil warning" aria-hidden="true"></span></a>&nbsp;<a href="/parlamentarios/delete/${p.id}"><span class="glyphicon glyphicon-trash alert" aria-hidden="true"></a> </td>
+			</tr>
+		
+	</table>
+	</div>
+	<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

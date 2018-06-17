@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+	<h2>Órganos</h2>
+	<form action="#" th:action="@{/organos/save}" th:object="${organo}" method="post">
+		<table>
+			<tr>
+				<td><label>ID</label></td>
+				<td><input th:field="*{id}" readOnly="true"/></td>
+			</tr>
+			<tr>
+				<td><label>Descripcion:</label></td>
+				<td><input th:field="*{descripcion}" /></td>
+			</tr>
+			<tr>
+				<td><label >Orden:</label></td>
+				<td><input th:field="*{orden}" /></td>
+			</tr>
+			<tr>
+				<td><label>Abreviatura:</label></td>
+				<td><input th:field="*{abreaviatura}" /></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-secondary" href="/organos"></a></td><td><input type="submit" value="Guardar" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+</body>
+</html>

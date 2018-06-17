@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+	<h2>Organos:</h2>
+	<div class="container">
+		<br />
+		<div th:if="${mensaje != null}">
+		<div class="alert alert-"  th:classappend="${tipomensaje}">
+			<span th:text="${mensaje}"></span>
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+		</div>
+		</div>
+	</div>
+	<a href="/organos/create"><span class="glyphicon glyphicon-plus sucess" aria-hidden="true"></span>Crear Organo</a>
+	<table class="table table-striped">
+		<tr>
+			<th>Abreviatura</th>
+			<th>Descripcion</th>
+			<th>Orden</th>
+			<th>Acciones</th>
+		</tr>		
+			<tr th:each="organo: ${organos}">
+				<td th:text="${organo.abreaviatura}"></td>
+				<td th:text="${organo.descripcion}"></td>
+				<td th:text="${organo.orden}"></td>				
+				<td><a href="" th:href="@{/organos/edit/{id}(id=${organo.id})}" ><span class="glyphicon glyphicon-pencil warning" aria-hidden="true"></span></a>&nbsp;<a href="" th:href="@{/organos/delete/{id}(id=${organo.id})}"><span class="glyphicon glyphicon-trash alert" aria-hidden="true"></span></a> </td> 
+			</tr>		
+	</table>
+	</div>
+	<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

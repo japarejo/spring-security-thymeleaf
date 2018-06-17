@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+	<h2>Editar Parlamentario:</h2>
+	<mvc:form modelAttribute="parlamentario" action="/parlamentarios/save">
+		<table>
+			<tr>
+				<td><mvc:label path="id">ID</mvc:label></td>
+				<td><mvc:input path="id" readOnly="true"/></td>
+			</tr>
+			<tr>
+				<td><mvc:label path="nombre">Nombre:</mvc:label></td>
+				<td><mvc:input path="nombre" /></td>
+			</tr>
+			<tr>
+				<td><mvc:label path="organos">Miembro de:</mvc:label></td>
+				<td>
+					<mvc:select path="organos" multiple="multiple"> 
+     					<mvc:options items="${todosOrganos}" itemValue="id" itemLabel="descripcion"></mvc:options>
+     				</mvc:select>
+     			</td>
+			</tr>
+			<tr>
+				<td><a href="/palamentarios" class="btn btn-secondary">Cancelar</a></td>
+				<td><input type="submit" value="Guardar" class="btn btn-primary"/></td>
+			</tr>
+		</table>
+	</mvc:form>
+	</div>
+</body>
+</html>

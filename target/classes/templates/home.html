@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Spring Boot Web Thymeleaf + Spring Security</h1>
+        <h2><a th:href="@{/admin}">Pagina de administracion (Protegida mediante Spring Security, necesita rol de Admin)</a></h2>
+        <h2><a th:href="@{/user}">Pagina de usuario (protegida mendiante Spring Security, necesita rol de User)</a></h2>
+        <h2><a th:href="@{/organos}">Pagina de gestion de organos debes estar logeado para acceder a ella</a></h2>
+        
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+        	INFORMACION ULTRA CONFIDENCIAL!!! Estamos dando un curso para parlamento.... :-S
+        </div>
+        
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
