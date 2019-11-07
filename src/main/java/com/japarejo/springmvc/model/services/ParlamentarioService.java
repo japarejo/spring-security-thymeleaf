@@ -28,7 +28,7 @@ public class ParlamentarioService {
 
 	public void borrarInsertarParlamentario(BufferedReader in) throws NumberFormatException, IOException {		
 		Long id=Long.parseLong(in.readLine());
-		parlamentarioRepo.delete(id);
+		parlamentarioRepo.deleteById(id);
 		
 	}
 
@@ -62,7 +62,7 @@ public class ParlamentarioService {
 	}
 
 	private void modificarParlamentario(Long id, BufferedReader in) throws IOException {
-		Parlamentario parlamentarioOpt=parlamentarioRepo.findOne(id);
+		Parlamentario parlamentarioOpt=parlamentarioRepo.findById(id).get();
 		if(parlamentarioOpt!=null) {
 			Parlamentario parlamentario=parlamentarioOpt;
 			leerParlamentario(parlamentario,in);
@@ -102,7 +102,7 @@ public class ParlamentarioService {
 	}
 	
 	public void deleteById(long id) {
-		parlamentarioRepo.delete(id);
+		parlamentarioRepo.deleteById(id);
 	}
 
 	public void save(Parlamentario parlamentario) {
@@ -110,7 +110,7 @@ public class ParlamentarioService {
 	}
 
 	public Parlamentario findById(long id) {
-		return parlamentarioRepo.findOne(id);
+		return parlamentarioRepo.findById(id).get();
 	}
 
 }

@@ -54,7 +54,7 @@ public class SalaService {
 	
 	public void borrarSala(BufferedReader in) throws NumberFormatException, IOException {
 		Long id=Long.parseLong(in.readLine());
-		salaRepo.delete(id);
+		salaRepo.deleteById(id);
 		
 	}
 
@@ -107,7 +107,7 @@ public class SalaService {
 	}
 
 	public void modificarSala(Long id, BufferedReader in) throws IOException {
-		Sala salaOpt=salaRepo.findOne(id);
+		Sala salaOpt=salaRepo.findById(id).get();
 		if(salaOpt!=null) {
 			Sala sala=salaOpt;
 			leerSala(sala,in);
@@ -116,7 +116,7 @@ public class SalaService {
 	}
 
 	public Sala findById(Long idSala) {
-		return salaRepo.findOne(idSala);
+		return salaRepo.findById(idSala).get();
 	}
 
 

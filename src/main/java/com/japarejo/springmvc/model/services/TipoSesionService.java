@@ -19,7 +19,7 @@ public class TipoSesionService {
 	
 	public void borrarTipoSesion(BufferedReader in) throws NumberFormatException, IOException {
 		Long id=Long.parseLong(in.readLine());
-		tipoSesionRepo.delete(id);				
+		tipoSesionRepo.deleteById(id);				
 	}
 
 	public void insertarTipoSesion(BufferedReader in) throws IOException {
@@ -41,7 +41,7 @@ public class TipoSesionService {
 	}
 
 	public void modificarTipoSesion(Long id, BufferedReader in) throws IOException {
-		TipoSesion tipoSesionOpt=tipoSesionRepo.findOne(id);
+		TipoSesion tipoSesionOpt=tipoSesionRepo.findById(id).get();
 		if(tipoSesionOpt!=null) {
 			TipoSesion tipoSesion=tipoSesionOpt;
 			leerTipoSesion(tipoSesion,in);
@@ -97,6 +97,6 @@ public class TipoSesionService {
 	}
 
 	public TipoSesion findById(Long idTipoSesion) {
-		return tipoSesionRepo.findOne(idTipoSesion);
+		return tipoSesionRepo.findById(idTipoSesion).get();
 	}
 }

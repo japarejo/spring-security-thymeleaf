@@ -31,7 +31,7 @@ public class SesionService {
 	
 	public void borrarSesion(BufferedReader in) throws NumberFormatException, IOException {
 		Long id=Long.parseLong(in.readLine());
-		sesionRepo.delete(id);		
+		sesionRepo.deleteById(id);		
 	}
 
 
@@ -69,7 +69,7 @@ public class SesionService {
 	}
 
 	public void modificarSesion(Long id, BufferedReader in) throws IOException {		
-		Sesion sesionOpt=sesionRepo.findOne(id);
+		Sesion sesionOpt=sesionRepo.findById(id).get();
 		if(sesionOpt!=null) {
 			Sesion sesion=sesionOpt;
 			leerSesion(sesion,in);

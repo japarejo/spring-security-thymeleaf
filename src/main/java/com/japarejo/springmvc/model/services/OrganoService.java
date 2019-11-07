@@ -38,7 +38,7 @@ public class OrganoService {
 	}
 
 	public void modificarOrgano(Long id, BufferedReader in) throws IOException {
-		Organo organoOpt=organoRepo.findOne(id);
+		Organo organoOpt=organoRepo.findById(id).get();
 		if(organoOpt!=null) {
 			Organo organo=organoOpt;
 			leerOrgano(organo,in);
@@ -73,7 +73,7 @@ public class OrganoService {
 		Long id;
 		try {
 			id = Long.parseLong(in.readLine());
-			organoRepo.delete(id);
+			organoRepo.deleteById(id);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,7 +129,7 @@ public class OrganoService {
 	}
 
 	public Organo findById(Long idOrgano) {
-		return organoRepo.findOne(idOrgano);
+		return organoRepo.findById(idOrgano).get();
 	}
 
 	public Iterable<Organo> findAll() {
@@ -141,7 +141,7 @@ public class OrganoService {
 	}
 	
 	public void delete(long id){
-		organoRepo.delete(id);
+		organoRepo.deleteById(id);
 	}
 
 }
